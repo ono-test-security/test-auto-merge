@@ -43,7 +43,6 @@ jobs:
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
       - name: Enable auto-merge for Dependabot PRs
-        if: ${{ steps.metadata.outputs.update-type != 'version-update:semver-major' }}
         run : |
           gh pr review --approve "$PR_URL"
           gh pr merge --auto --rebase "$PR_URL"
